@@ -4,6 +4,7 @@
 #region imports
 import pygame as pg
 from OpenGL.GL import *
+from OpenGL.GL.shaders import compileProgram, compileShader
 #endregion
 
 #region constante
@@ -16,7 +17,9 @@ SCREEN_COLOR = (0.5,0.0,0.25,1.0)
 WINDOW_CREATION_FLAGS = pg.OPENGL | pg.DOUBLEBUF # doble buffer para la ventana
 FRAMERATE = 60
 #endregion
-
+def make_shader_module(filename: str, module_type: int) -> int:
+    # cargamos el archivo de los vertices y fragmentos
+    with open(filename, "r") as file:
 #region setup
 # lo mas recomendable para que sea constante el framerate
 pg.init()
